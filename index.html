@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satanand - an MIS Executive</title>
+    <title>Satanand – MIS & Purchase Systems Developer</title>
     <style>
         * {
             margin: 0;
@@ -33,7 +33,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(256, 256, 256, 0);
+            background: rgba(255, 255, 255, 0);
             backdrop-filter: blur(2px);
             padding: 20px 50px;
             z-index: 1000;
@@ -44,6 +44,7 @@
         nav.scrolled {
             padding: 15px 50px;
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+            background: rgba(10, 10, 25, 0.95);
         }
 
         .nav-container {
@@ -158,6 +159,7 @@
             text-align: center;
             z-index: 1;
             animation: fadeInUp 1s ease;
+            padding: 0 20px;
         }
 
         @keyframes fadeInUp {
@@ -172,7 +174,7 @@
         }
 
         .hero-content h1 {
-            font-size: 4em;
+            font-size: 3.5em;
             margin-bottom: 20px;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
@@ -181,7 +183,7 @@
         }
 
         .hero-content p {
-            font-size: 1.5em;
+            font-size: 1.3em;
             margin-bottom: 30px;
             color: #aaa;
         }
@@ -243,7 +245,7 @@
         }
 
         .about-text p {
-            font-size: 1.2em;
+            font-size: 1.1em;
             line-height: 1.8;
             color: #ccc;
             margin-bottom: 20px;
@@ -298,22 +300,21 @@
             height: 100%;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             opacity: 0;
-            transition: opacity 0.3s;
+            
         }
 
         .project-card:hover::before {
-            opacity: 0.1;
+            opacity: 0.08;
         }
 
         .project-card:hover {
-            transform: translateY(5px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .project-icon {
-            padding: 40px;
+            padding: 30px;
             text-align: center;
-            font-size: 4em;
+            font-size: 3em;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -321,28 +322,29 @@
         }
 
         .project-content {
-            padding: 30px;
+            padding: 25px 30px 30px;
             position: relative;
             z-index: 1;
         }
 
         .project-content h3 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
+            font-size: 1.6em;
+            margin-bottom: 12px;
             color: var(--accent);
         }
 
         .project-content p {
             color: #bbb;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             line-height: 1.6;
+            font-size: 0.98em;
         }
 
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .tag {
@@ -350,7 +352,7 @@
             color: var(--primary-color);
             padding: 5px 15px;
             border-radius: 20px;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
 
         .project-link {
@@ -400,6 +402,7 @@
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             border-radius: 10px;
             transition: width 1s ease;
+            width: 0;
         }
 
         /* Contact Section */
@@ -479,7 +482,7 @@
 
         @media (max-width: 768px) {
             .hero-content h1 {
-                font-size: 2.5em;
+                font-size: 2.4em;
             }
 
             .about-content {
@@ -492,6 +495,7 @@
 
             .nav-links {
                 gap: 20px;
+                font-size: 0.9em;
             }
 
             nav {
@@ -528,8 +532,8 @@
             <div class="shape"></div>
         </div>
         <div class="hero-content">
-            <h1>Data Analyst, MIS Executive & Automation Expert</h1>
-            <p>Transforming data into actionable insights</p>
+            <h1>MIS & Purchase Systems Developer</h1>
+            <p>Building automation, dashboards and business systems using Excel, Google Sheets & Web Tech</p>
             <a href="#projects" class="cta-button">View My Work</a>
         </div>
     </section>
@@ -539,131 +543,190 @@
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
             <div class="about-text">
-                <h3>Hello! I'm Satanand a Data Analyst & an MIS Executive.</h3>
-                <p>I specialize in creating automated solutions using Google Sheets, Excel, and web technologies. My passion lies in building efficient systems that streamline workflows and provide valuable insights.</p>
-                <p>With expertise in data analysis, automation, and web development, I create tools that make complex tasks simple and intuitive.</p>
+                <h3>I'm Satanand – MIS Executive & Automation Builder</h3>
+                <p>
+                    I design and build systems that make businesses run smoother: 
+                    production trackers, purchase workflows, inventory tools and dashboards. 
+                    My focus is simple – reduce manual work, increase visibility, and give management 
+                    clean numbers to decide faster.
+                </p>
+                <p>
+                    I work mainly with Excel, Google Sheets, Apps Script and lightweight web apps 
+                    to turn messy operations into structured, trackable processes for MSMEs and growing teams.
+                </p>
             </div>
             <div class="skills-grid">
                 <div class="skill-item">
-                    <h4>📊 Google Sheets</h4>
-                    <p>Advanced formulas, Apps Script automation, dashboard creation</p>
+                    <h4>📊 Google Sheets & Apps Script</h4>
+                    <p>Automated workflows, approval flows, email alerts, MIS and purchase tracking systems.</p>
                 </div>
                 <div class="skill-item">
                     <h4>📈 Excel & VBA</h4>
-                    <p>Complex data models, macro automation, inventory systems</p>
+                    <p>Complex reports, stock management, macros, purchase and production dashboards.</p>
                 </div>
                 <div class="skill-item">
                     <h4>💻 Web Development</h4>
-                    <p>HTML, CSS, JavaScript for interactive applications</p>
+                    <p>HTML, CSS, JavaScript for MIS tools, CRUD apps and internal dashboards.</p>
                 </div>
                 <div class="skill-item">
                     <h4>📉 Data Visualization</h4>
-                    <p>Tableau, Power BI</p>
+                    <p>Power BI & Tableau for sales analysis, performance tracking and management reporting.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
+        <!-- Projects Section -->
     <section id="projects">
         <h2 class="section-title">My Projects</h2>
         <div class="projects-grid">
+
+            <!-- Inventory / Purchase System -->
             <div class="project-card">
-                <div class="project-icon">📊</div>
+                <div class="project-icon">📦</div>
                 <div class="project-content">
                     <h3>Inventory Management System</h3>
-                    <p>Excel-based IMS with automated stock tracking, purchase orders, and real-time reporting dashboards.</p>
+                    <p>
+                        Excel-based system to manage stock with automated calculations and dashboards for management.Having the userform feature for easy data entry and retrieval. Making inventory tracking simple and efficient. 
+                    </p>
                     <div class="project-tags">
                         <span class="tag">Excel</span>
                         <span class="tag">VBA</span>
-                        <span class="tag">Automation</span>
+                        <span class="tag">Userform</span>
                     </div>
-                    <a href="https://github.com/satanandkenb/vba-based-projects/blob/main/README.md" target="_blank" class="project-link">View Project →</a>
+                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/IMS" target="_blank" class="project-link">View Project →</a>
+                </div>
+            </div>
+            <!-- Web-based Production Management System -->
+            <div class="project-card">
+                <div class="project-icon">🏭</div>
+                <div class="project-content">
+                    <h3>Production Management System (Web + Sheets)</h3>
+                    <p>
+                        Web-based CRUD app for MSME production tracking using Google Sheets as database – 
+                        order-wise status, sample data and GitHub-ready documentation.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Apps Script</span>
+                        <span class="tag">Google Sheets</span>
+                    </div>
+                    <!-- Update this link with your repo or live URL -->
+                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/PMS" target="_blank" class="project-link">View Project →</a>
                 </div>
             </div>
 
+            <!-- Web-based Customer Complaint System (renamed from Google Sheets Automation) -->
             <div class="project-card">
-                <div class="project-icon">📈</div>
+                <div class="project-icon">🧾</div>
                 <div class="project-content">
-                    <h3>Google Sheets Automation</h3>
-                    <p>Automated data processing system using Apps Script with email notifications and data validation.</p>
+                    <h3>Customer Complaint Portal (Sheets DB)</h3>
+                    <p>
+                        Web-based complaint booking system using Google Sheets as backend – 
+                        form submission, logged records and trackable entries.
+                    </p>
                     <div class="project-tags">
                         <span class="tag">Google Sheets</span>
                         <span class="tag">Apps Script</span>
-                        <span class="tag">API Integration</span>
+                        <span class="tag">Web Form</span>
                     </div>
-                    <a href="https://docs.google.com/spreadsheets/d/1Igkq46nX_kbu4McD5jaNN7Ng8HXFTrrEHOGGZ5yWw_8/edit?gid=0#gid=0" target="_blank" class="project-link">View Project →</a>
+                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/CRM" target="_blank" class="project-link">View Project →</a>
                 </div>
             </div>
 
+            <!-- Purchase Analytics & Vendor Dashboard -->
             <div class="project-card">
-                <div class="project-icon">⌨️</div>
+                <div class="project-icon">📈</div>
                 <div class="project-content">
-                    <h3>Typing Speed Test</h3>
-                    <p>Interactive web application to measure and improve typing speed with real-time WPM tracking and graphs.</p>
+                    <h3>Purchase Analytics & Vendor Dashboard (Upgrading Stage...)</h3>
+                    <p>
+                        A complete purchase MIS: purchase tracker, vendor scorecard, price comparison and KPIs 
+                        to analyse spend, lead time and supplier performance.
+                    </p>
                     <div class="project-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">Google Sheets</span>
+                        <span class="tag">Dashboards</span>
+                        <span class="tag">MIS</span>
                     </div>
-                    <a href="TypeB.html" class="project-link">View Project →</a>
+                    <!-- Update this with your Excel/Sheets repo or link -->
+                    <a href="#" target="_blank" class="project-link">View Project →</a>
                 </div>
             </div>
 
-            <div class="project-card">
-                <div class="project-icon">⏰</div>
-                <div class="project-content">
-                    <h3>Pomodoro Timer</h3>
-                    <p>Productivity timer web app with customizable work/break intervals and progress tracking.</p>
-                    <div class="project-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Web Design</span>
-                        <span class="tag">Productivity</span>
-                    </div>
-                    <a href="pomodoro.html" target="_blank" class="project-link">View Project →</a>
-                </div>
-            </div>
-
+            <!-- Sales Dashboard -->
             <div class="project-card">
                 <div class="project-icon">📊</div>
                 <div class="project-content">
-                    <h3>Sales Dashboard</h3>
-                    <p>Interactive Power BI dashboard analyzing sales trends, customer behavior, and revenue forecasting.</p>
+                    <h3>Sales & Performance Dashboard</h3>
+                    <p>
+                        BI dashboard to analyse sales performance, customer trends and revenue patterns, 
+                        with presentation-ready visuals for management review.
+                    </p>
                     <div class="project-tags">
                         <span class="tag">Power BI</span>
                         <span class="tag">SQL</span>
                         <span class="tag">DAX</span>
                     </div>
-                    <a href="https://github.com/satanandkenb/-/blob/main/sales_dashboard_presentation.md" target="_blank" class="project-link">View Project →</a>
+                    <a href="https://github.com/K3nB/Sheet-based-Projects/blob/main/Exceptional/Sales%20Dashboard.md" target="_blank" class="project-link">View Project →</a>
                 </div>
             </div>
 
+            <!-- ERP (Future) -->
             <div class="project-card">
-                <div class="project-icon">📊</div>
+                <div class="project-icon">🧩</div>
                 <div class="project-content">
-                    <h3>ERP (Coming Soon)</h3>
-                    <p>Building an ERP for Small business.</p>
+                    <h3>ERP for Small Business (In Progress)</h3>
+                    <p>
+                        Designing a modular ERP-style system for MSMEs – starting with production, purchase and 
+                        inventory modules using web front-end and Google Sheets backend.
+                    </p>
                     <div class="project-tags">
-                        <span class="tag">HTML/Tailwind Css</span>
-                        <span class="tag">Google Sheet</span>
-                        <span class="tag">AppScript</span>
+                        <span class="tag">HTML/Tailwind CSS</span>
+                        <span class="tag">Google Sheets</span>
+                        <span class="tag">Apps Script</span>
                     </div>
                     <a href="#" target="_blank" class="project-link">View Project →</a>
                 </div>
             </div>
+            <!-- Attendance Management System -->
             <div class="project-card">
-                <div class="project-icon">📊</div>
+                <div class="project-icon">🧩</div>
                 <div class="project-content">
-                    <h3>Multi Page Form (Proposal form)</h3>
-                    <p>Building an ERP for Small business.</p>
+                    <h3>Attendance Management System</h3>
+                    <p>
+                        An attendance management system using HTML, Tailwind CSS, and Google Sheets as the backend. 
+                        This system allows for easy tracking and management of attendance records.
+                    </p>
                     <div class="project-tags">
-                        <span class="tag">HTML/Css</span>
-                        <span class="tag">Javascript</span>
+                        <span class="tag">HTML/Tailwind CSS</span>
+                        <span class="tag">Google Sheets</span>
+                        <span class="tag">Apps Script</span>
                     </div>
-                    <a href="multi-page-proposal-form.html" target="_blank" class="project-link">View Project →</a>
+                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/ATTENDANCE" target="_blank" class="project-link">View Project →</a>
+                </div>
+            </div>
+            <!-- Expense Management System -->
+            <div class="project-card">
+                <div class="project-icon">🧩</div>
+                <div class="project-content">
+                    <h3>Expense Management System</h3>
+                    <p>
+                        An expense management system using HTML, Tailwind CSS, and Google Sheets as the backend. 
+                        This system allows for easy tracking and management of expense records.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">HTML/Tailwind CSS</span>
+                        <span class="tag">Google Sheets</span>
+                        <span class="tag">Apps Script</span>
+                    </div>
+                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/Expense-Tracker" target="_blank" class="project-link">View Project →</a>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Progress Tracker Section -->
     <section id="progress">
@@ -720,20 +783,20 @@
             </div>
 
             <p style="text-align: center; margin-top: 30px; color: #bbb;">
-                <a href="https://docs.google.com/spreadsheets/d/15YqZ83GmbvBzo__XsNSYdx54cOYqJqR-YWZuQzI5tPA/edit?gid=750396312#gid=750396312" target="_blank" style="color: var(--primary-color); text-decoration: none;">
+                <a href="https://docs.google.com/spreadsheets/d/15YqZ83GmbvBzo__XsNSYdx54cOYqJqR-YWZuQzI5tPA/edit?gid=750396312#gid=750396312" 
+                   target="_blank" 
+                   style="color: var(--primary-color); text-decoration: none;">
                     📊 View Detailed Progress Tracking Sheet →
                 </a>
             </p>
         </div>
     </section>
 
-
-    
     <!-- Contact Section -->
     <section id="contact">
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-content">
-            <p>Interested in collaboration or have a project in mind? Let's connect!</p>
+            <p>Looking for someone to build MIS, purchase or automation systems for your business? Let’s connect.</p>
             <div class="contact-links">
                 <a href="mailto:satanand74@gmail.com" class="contact-link">
                     <span>📧</span>
@@ -757,11 +820,11 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 My Portfolio. Built with passion and dedication.</p>
+        <p>&copy; 2025 Portfolio of Satanand. Built with focus, experiments and automation.</p>
     </footer>
 
     <!-- Scroll to Top Button -->
-    <div class="scroll-top" id="scrollTop">
+    <div class="scroll-top" id="scrollTop" aria-label="Scroll to top">
         <span style="color: white; font-size: 1.5em;">↑</span>
     </div>
 
@@ -840,17 +903,6 @@
                         block: 'start'
                     });
                 }
-            });
-        });
-
-        // Add floating animation to project cards on hover
-        const projectCards = document.querySelectorAll('.project-card');
-        projectCards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.animation = 'float 3s ease-in-out infinite';
-            });
-            card.addEventListener('mouseleave', function() {
-                this.style.animation = 'none';
             });
         });
     </script>
