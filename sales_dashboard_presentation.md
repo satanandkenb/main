@@ -197,7 +197,7 @@ This project demonstrates proficiency in:
 ---
 ## Glance of Dashboard
 
-<img width="505" height="300" alt="image" src="https://github.com/user-attachments/assets/c0305725-3130-40ec-973b-84788e6b9e29" />
+<img width="805" height="500" alt="image" src="https://github.com/user-attachments/assets/c0305725-3130-40ec-973b-84788e6b9e29" />
 
 <p align="center">Made with ❤️ and Power BI</p>
 <p align="center">⭐ Star this repo if you find it helpful!</p>
