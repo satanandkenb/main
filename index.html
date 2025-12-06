@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Satanand – MIS Executive</title>
+    <title>Satanand – MIS & Purchase Systems Developer</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <style>
         * {
@@ -49,7 +49,7 @@
         }
 
         nav.scrolled {
-            padding: 12px 50px;
+            padding: 12px 10px;
         }
 
         .nav-container {
@@ -574,7 +574,6 @@
         }
 
         /* ------------ RESPONSIVE (MOBILE) ------------ */
-        /* ------------ RESPONSIVE (MOBILE) ------------ */
         @media (max-width: 768px) {
 
             /* Navbar: stacked, logo on top, pill-bar below */
@@ -592,40 +591,35 @@
                 font-size: 1.4em;
             }
 
-            /* PILL NAV BAR LIKE YOUR SCREENSHOT */
+            /* PILL NAV BAR – ALL ITEMS ALWAYS VISIBLE */
             .nav-links {
                 display: flex;
                 align-items: center;
-                justify-content: center;
-                gap: 12px;
+                justify-content: space-between;
+                gap: 8px;
                 /* spacing between buttons */
-                padding: 16px 10px;
+                padding: 16px 8px;
                 border-radius: 999px;
                 background: var(--bg-main);
                 box-shadow:
                     6px 6px 16px var(--shadow-dark),
                     -6px -6px 16px var(--shadow-light);
-                max-width: 100%;
-                overflow-x: auto;
-                /* if it doesn't fit, scroll horizontally */
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                /* hide scrollbar Firefox */
-            }
-
-            .nav-links::-webkit-scrollbar {
-                display: none;
-                /* hide scrollbar Chrome */
+                width: 100%;
+                max-width: 450px;
+                /* keeps it nice & compact */
+                overflow: visible;
+                /* no scrolling, nothing hidden */
             }
 
             .nav-links li {
-                flex: 0 0 auto;
-                /* keep each button its natural width */
+                flex: 1 1 0;
+                /* each button shares available width */
             }
 
             .nav-links a {
-                padding: 8px 18px;
-                font-size: 0.85rem;
+                width: 100%;
+                padding: 8px 10px;
+                font-size: 0.82rem;
                 text-align: center;
             }
 
@@ -634,7 +628,9 @@
                 padding-top: 110px;
                 min-height: 100vh;
             }
-
+            .hero-bg {
+                height: 90%;
+            }
             .hero-content h1 {
                 font-size: 2.1em;
             }
