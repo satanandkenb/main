@@ -1,671 +1,697 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Satanand – MIS & Purchase Systems Developer</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    :root {
-        --primary-color: #151f49;
-        --secondary-color: #5ec32b;
-        --accent: #f39c12;
+        :root {
+            --primary-color: #151f49;
+            --secondary-color: #5ec32b;
+            --accent: #f39c12;
 
-        --bg-main: #e0e4ec;       /* main neo background */
-        --shadow-dark: #b9bcc4;
-        --shadow-light: #ffffff;
-        --text-main: #333333;
-        --text-soft: #777777;
-    }
+            --bg-main: #e0e4ec;
+            /* main neo background */
+            --shadow-dark: #b9bcc4;
+            --shadow-light: #ffffff;
+            --text-main: #333333;
+            --text-soft: #777777;
+        }
 
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: var(--bg-main);
-        color: var(--text-main);
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-    /* ------------ NAVBAR (NEO) ------------ */
-    nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        padding: 18px 50px;
-        z-index: 1000;
-        background: var(--bg-main);
-        box-shadow:
-            6px 6px 16px var(--shadow-dark),
-            -6px -6px 16px var(--shadow-light);
-        transition: all 0.3s ease;
-    }
+        /* ------------ NAVBAR (NEO) ------------ */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 50px;
+            z-index: 1000;
+            background: var(--bg-main);
+            box-shadow:
+                6px 6px 16px var(--shadow-dark),
+                -6px -6px 16px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
 
-    nav.scrolled {
-        padding: 12px 50px;
-    }
+        nav.scrolled {
+            padding: 12px 50px;
+        }
 
-    .nav-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .logo {
-        font-size: 1.6em;
-        font-weight: 700;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
+        .logo {
+            font-size: 1.6em;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .nav-links {
-        display: flex;
-        gap: 30px;
-        list-style: none;
-    }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
 
-    .nav-links a {
-        position: relative;
-        color: var(--text-main);
-        text-decoration: none;
-        font-weight: 500;
-        padding: 12px 20px;
-        border-radius: 999px;
-        box-shadow:
-            4px 4px 10px var(--shadow-dark),
-            -4px -4px 10px var(--shadow-light);
-        transition: all 0.2s ease;
-        font-size: 0.95em;
-        background: var(--bg-main);
-    }
+        .nav-links a {
+            position: relative;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 20px;
+            border-radius: 999px;
+            box-shadow:
+                4px 4px 10px var(--shadow-dark),
+                -4px -4px 10px var(--shadow-light);
+            transition: all 0.2s ease;
+            font-size: 0.95em;
+            background: var(--bg-main);
+            z-index: 0;
+            /* needed for ring stacking */
+        }
 
-    .nav-links a::after {
-        content: none; /* remove old underline */
-    }
+        .nav-links a::after {
+            content: none;
+            /* remove old underline */
+        }
 
-    .nav-links a:hover {
-        box-shadow:
-            inset 3px 3px 8px var(--shadow-dark),
-            inset -3px -3px 8px var(--shadow-light);
-    }
+        .nav-links a:hover {
+            box-shadow:
+                inset 3px 3px 8px var(--shadow-dark),
+                inset -3px -3px 8px var(--shadow-light);
+        }
 
-    /* ------------ ACTIVE NAV GRADIENT RING ------------ */
-    .nav-links a.active {
-        position: relative;
-        z-index: 1;
-    }
+        /* ------------ ACTIVE NAV + ANIMATED GRADIENT RING ------------ */
+        .nav-links a.active {
+            position: relative;
+        }
 
-    .nav-links a.active::before {
-        content: "";
-        position: absolute;
-        inset: -4px;                    /* ring thickness */
-        border-radius: 999px;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        z-index: -1;
-        padding: 4px;
-        background-size: 200% 200%;
-        -webkit-mask:
-            linear-gradient(#fff 0 0) content-box,
-            linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-                mask-composite: exclude;
-        animation:
-            ring-pop 0.25s ease-out,
-            ring-gradient 4s linear infinite;
-    }
+        .nav-links a.active::before {
+            content: "";
+            position: absolute;
+            inset: -4px;
+            /* how far outside the pill */
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            z-index: -1;
+            padding: 4px;
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: ring-pop 0.28s ease-out;
+            box-shadow: 0 0 14px rgba(21, 31, 73, 0.25);
+        }
 
-    @keyframes ring-pop {
-        0% {
-            transform: scale(0.6);
+        @keyframes ring-pop {
+            0% {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            60% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* ------------ HERO ------------ */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-top: 90px;
+            /* because navbar is fixed */
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, #ffffff 0, transparent 60%),
+                radial-gradient(circle at bottom right, #d3d8e3 0, transparent 55%);
+            opacity: 0.9;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--bg-main);
+            box-shadow:
+                10px 10px 25px var(--shadow-dark),
+                -10px -10px 25px var(--shadow-light);
+            opacity: 0.75;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 220px;
+            height: 220px;
+            top: 12%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 160px;
+            height: 160px;
+            top: 65%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 130px;
+            height: 130px;
+            bottom: 18%;
+            left: 23%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -40px) scale(1.05);
+            }
+
+            66% {
+                transform: translate(-20px, 25px) scale(0.97);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+            padding: 0 20px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 3.2em;
+            margin-bottom: 18px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.15em;
+            margin-bottom: 30px;
+            color: var(--text-soft);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 36px;
+            border-radius: 999px;
+            background: var(--bg-main);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow:
+                8px 8px 18px var(--shadow-dark),
+                -8px -8px 18px var(--shadow-light);
+            transition: all 0.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                inset 4px 4px 10px var(--shadow-dark),
+                inset -4px -4px 10px var(--shadow-light);
+        }
+
+        /* ------------ SECTIONS ------------ */
+        section {
+            padding: 100px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
             opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
         }
-        60% {
-            transform: scale(1.05);
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 2.6em;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ------------ ABOUT ------------ */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.9em;
+            margin-bottom: 18px;
+            color: var(--accent);
+        }
+
+        .about-text p {
+            font-size: 1.02em;
+            line-height: 1.8;
+            color: var(--text-soft);
+            margin-bottom: 16px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .skill-item {
+            background: var(--bg-main);
+            padding: 18px 20px;
+            border-radius: 18px;
+            box-shadow:
+                7px 7px 16px var(--shadow-dark),
+                -7px -7px 16px var(--shadow-light);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-4px);
+            box-shadow:
+                4px 4px 10px var(--shadow-dark),
+                -4px -4px 10px var(--shadow-light);
+        }
+
+        .skill-item h4 {
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-size: 1.02em;
+        }
+
+        .skill-item p {
+            font-size: 0.95em;
+            color: var(--text-soft);
+        }
+
+        /* ------------ PROJECTS ------------ */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+        }
+
+        .project-card {
+            position: relative;
+            background: var(--bg-main);
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow:
+                10px 10px 22px var(--shadow-dark),
+                -10px -10px 22px var(--shadow-light);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow:
+                6px 6px 16px var(--shadow-dark),
+                -6px -6px 16px var(--shadow-light);
+        }
+
+        .project-icon {
+            padding: 26px;
+            text-align: center;
+            font-size: 2.4em;
+            background: var(--bg-main);
+            box-shadow:
+                inset 6px 6px 14px var(--shadow-dark),
+                inset -6px -6px 14px var(--shadow-light);
+        }
+
+        .project-content {
+            padding: 22px 26px 26px;
+        }
+
+        .project-content h3 {
+            font-size: 1.35em;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .project-content p {
+            color: var(--text-soft);
+            margin-bottom: 16px;
+            line-height: 1.6;
+            font-size: 0.96em;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .tag {
+            padding: 5px 14px;
+            border-radius: 999px;
+            font-size: 0.82em;
+            color: var(--primary-color);
+            background: var(--bg-main);
+            box-shadow:
+                inset 2px 2px 6px var(--shadow-dark),
+                inset -2px -2px 6px var(--shadow-light);
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 6px 0;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .project-link:hover {
+            transform: translateX(4px);
+        }
+
+        /* ------------ PROGRESS ------------ */
+        .progress-container {
+            background: var(--bg-main);
+            padding: 28px 26px 34px;
+            border-radius: 22px;
+            box-shadow:
+                9px 9px 20px var(--shadow-dark),
+                -9px -9px 20px var(--shadow-light);
+        }
+
+        .progress-item {
+            margin-bottom: 26px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .progress-header h4 {
+            color: var(--accent);
+            font-size: 1em;
+        }
+
+        .progress-header span {
+            color: var(--text-soft);
+        }
+
+        .progress-bar {
+            height: 12px;
+            border-radius: 999px;
+            background: var(--bg-main);
+            box-shadow:
+                inset 5px 5px 10px var(--shadow-dark),
+                inset -5px -5px 10px var(--shadow-light);
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            width: 0;
+            transition: width 1s ease;
+        }
+
+        /* ------------ CONTACT ------------ */
+        .contact-content {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1.08em;
+            color: var(--text-soft);
+            margin-bottom: 34px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 18px;
+            background: var(--bg-main);
+            color: var(--text-main);
+            text-decoration: none;
+            box-shadow:
+                7px 7px 16px var(--shadow-dark),
+                -7px -7px 16px var(--shadow-light);
+            transition: all 0.2s ease;
+            font-size: 0.96em;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                4px 4px 10px var(--shadow-dark),
+                -4px -4px 10px var(--shadow-light);
+        }
+
+        /* ------------ FOOTER ------------ */
+        footer {
+            text-align: center;
+            padding: 26px;
+            margin-top: 40px;
+            color: var(--text-soft);
+            background: var(--bg-main);
+            box-shadow:
+                -4px -4px 12px var(--shadow-light),
+                4px 4px 12px var(--shadow-dark);
+        }
+
+        /* ------------ SCROLL TOP ------------ */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--bg-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.25s ease;
+            z-index: 999;
+            box-shadow:
+                7px 7px 16px var(--shadow-dark),
+                -7px -7px 16px var(--shadow-light);
+        }
+
+        .scroll-top.visible {
             opacity: 1;
         }
-        100% {
-            transform: scale(1);
-            opacity: 1;
+
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                4px 4px 10px var(--shadow-dark),
+                -4px -4px 10px var(--shadow-light);
         }
-    }
 
-    @keyframes ring-gradient {
-        0% {
-            background-position: 0% 50%;
+        /* ------------ RESPONSIVE (MOBILE) ------------ */
+        /* ------------ RESPONSIVE (MOBILE) ------------ */
+        @media (max-width: 768px) {
+
+            /* Navbar: stacked, logo on top, pill-bar below */
+            nav {
+                padding: 10px 12px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .logo {
+                font-size: 1.4em;
+            }
+
+            /* PILL NAV BAR LIKE YOUR SCREENSHOT */
+            .nav-links {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+                /* spacing between buttons */
+                padding: 16px 10px;
+                border-radius: 999px;
+                background: var(--bg-main);
+                box-shadow:
+                    6px 6px 16px var(--shadow-dark),
+                    -6px -6px 16px var(--shadow-light);
+                max-width: 100%;
+                overflow-x: auto;
+                /* if it doesn't fit, scroll horizontally */
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                /* hide scrollbar Firefox */
+            }
+
+            .nav-links::-webkit-scrollbar {
+                display: none;
+                /* hide scrollbar Chrome */
+            }
+
+            .nav-links li {
+                flex: 0 0 auto;
+                /* keep each button its natural width */
+            }
+
+            .nav-links a {
+                padding: 8px 18px;
+                font-size: 0.85rem;
+                text-align: center;
+            }
+
+            /* Hero tweaks */
+            .hero {
+                padding-top: 110px;
+                min-height: 100vh;
+            }
+
+            .hero-content h1 {
+                font-size: 2.1em;
+            }
+
+            .hero-content p {
+                font-size: 0.98em;
+            }
+
+            .cta-button {
+                padding: 10px 26px;
+                font-size: 0.9em;
+            }
+
+            /* Sections: less padding */
+            section {
+                padding: 70px 20px;
+            }
+
+            /* About: one column layout */
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Projects: single column */
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Contact links: vertical, full width */
+            .contact-links {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 14px;
+            }
+
+            .contact-link {
+                justify-content: center;
+                width: 100%;
+            }
+
+            /* Scroll top smaller on mobile */
+            .scroll-top {
+                width: 42px;
+                height: 42px;
+                bottom: 16px;
+                right: 16px;
+            }
         }
-        100% {
-            background-position: 100% 50%;
-        }
-    }
-
-    /* ------------ HERO ------------ */
-    .hero {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        padding-top: 90px; /* because navbar is fixed */
-    }
-
-    .hero-bg {
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(circle at top left, #ffffff 0, transparent 60%),
-                    radial-gradient(circle at bottom right, #d3d8e3 0, transparent 55%);
-        opacity: 0.9;
-    }
-
-    .floating-shapes {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-    }
-
-    .shape {
-        position: absolute;
-        border-radius: 50%;
-        background: var(--bg-main);
-        box-shadow:
-            10px 10px 25px var(--shadow-dark),
-            -10px -10px 25px var(--shadow-light);
-        opacity: 0.75;
-        animation: float 15s infinite ease-in-out;
-    }
-
-    .shape:nth-child(1) {
-        width: 220px;
-        height: 220px;
-        top: 12%;
-        left: 10%;
-        animation-delay: 0s;
-    }
-
-    .shape:nth-child(2) {
-        width: 160px;
-        height: 160px;
-        top: 65%;
-        right: 10%;
-        animation-delay: 2s;
-    }
-
-    .shape:nth-child(3) {
-        width: 130px;
-        height: 130px;
-        bottom: 18%;
-        left: 23%;
-        animation-delay: 4s;
-    }
-
-    @keyframes float {
-        0%, 100% { transform: translate(0, 0) scale(1); }
-        33% { transform: translate(30px, -40px) scale(1.05); }
-        66% { transform: translate(-20px, 25px) scale(0.97); }
-    }
-
-    .hero-content {
-        text-align: center;
-        z-index: 1;
-        animation: fadeInUp 1s ease;
-        padding: 0 20px;
-    }
-
-    @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(30px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-content h1 {
-        font-size: 3.2em;
-        margin-bottom: 18px;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .hero-content p {
-        font-size: 1.15em;
-        margin-bottom: 30px;
-        color: var(--text-soft);
-    }
-
-    .cta-button {
-        display: inline-block;
-        padding: 14px 36px;
-        border-radius: 999px;
-        background: var(--bg-main);
-        color: var(--primary-color);
-        text-decoration: none;
-        font-weight: 600;
-        box-shadow:
-            8px 8px 18px var(--shadow-dark),
-            -8px -8px 18px var(--shadow-light);
-        transition: all 0.2s ease;
-    }
-
-    .cta-button:hover {
-        transform: translateY(-2px);
-        box-shadow:
-            inset 4px 4px 10px var(--shadow-dark),
-            inset -4px -4px 10px var(--shadow-light);
-    }
-
-    /* ------------ SECTIONS ------------ */
-    section {
-        padding: 100px 50px;
-        max-width: 1400px;
-        margin: 0 auto;
-        opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.8s ease;
-    }
-
-    section.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .section-title {
-        font-size: 2.6em;
-        text-align: center;
-        margin-bottom: 60px;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    /* ------------ ABOUT ------------ */
-    .about-content {
-        display: grid;
-        grid-template-columns: 1.1fr 1fr;
-        gap: 50px;
-        align-items: center;
-    }
-
-    .about-text h3 {
-        font-size: 1.9em;
-        margin-bottom: 18px;
-        color: var(--accent);
-    }
-
-    .about-text p {
-        font-size: 1.02em;
-        line-height: 1.8;
-        color: var(--text-soft);
-        margin-bottom: 16px;
-    }
-
-    .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 18px;
-    }
-
-    .skill-item {
-        background: var(--bg-main);
-        padding: 18px 20px;
-        border-radius: 18px;
-        box-shadow:
-            7px 7px 16px var(--shadow-dark),
-            -7px -7px 16px var(--shadow-light);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .skill-item:hover {
-        transform: translateY(-4px);
-        box-shadow:
-            4px 4px 10px var(--shadow-dark),
-            -4px -4px 10px var(--shadow-light);
-    }
-
-    .skill-item h4 {
-        color: var(--accent);
-        margin-bottom: 8px;
-        font-size: 1.02em;
-    }
-
-    .skill-item p {
-        font-size: 0.95em;
-        color: var(--text-soft);
-    }
-
-    /* ------------ PROJECTS ------------ */
-    .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-        gap: 35px;
-    }
-
-    .project-card {
-        position: relative;
-        background: var(--bg-main);
-        border-radius: 22px;
-        overflow: hidden;
-        box-shadow:
-            10px 10px 22px var(--shadow-dark),
-            -10px -10px 22px var(--shadow-light);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .project-card:hover {
-        transform: translateY(-6px);
-        box-shadow:
-            6px 6px 16px var(--shadow-dark),
-            -6px -6px 16px var(--shadow-light);
-    }
-
-    .project-icon {
-        padding: 26px;
-        text-align: center;
-        font-size: 2.4em;
-        background: var(--bg-main);
-        box-shadow:
-            inset 6px 6px 14px var(--shadow-dark),
-            inset -6px -6px 14px var(--shadow-light);
-    }
-
-    .project-content {
-        padding: 22px 26px 26px;
-    }
-
-    .project-content h3 {
-        font-size: 1.35em;
-        margin-bottom: 10px;
-        color: var(--accent);
-    }
-
-    .project-content p {
-        color: var(--text-soft);
-        margin-bottom: 16px;
-        line-height: 1.6;
-        font-size: 0.96em;
-    }
-
-    .project-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 16px;
-    }
-
-    .tag {
-        padding: 5px 14px;
-        border-radius: 999px;
-        font-size: 0.82em;
-        color: var(--primary-color);
-        background: var(--bg-main);
-        box-shadow:
-            inset 2px 2px 6px var(--shadow-dark),
-            inset -2px -2px 6px var(--shadow-light);
-    }
-
-    .project-link {
-        display: inline-block;
-        color: var(--primary-color);
-        text-decoration: none;
-        font-weight: 600;
-        padding: 6px 0;
-        border-radius: 6px;
-        transition: all 0.2s ease;
-    }
-
-    .project-link:hover {
-        transform: translateX(4px);
-    }
-
-    /* ------------ PROGRESS ------------ */
-    .progress-container {
-        background: var(--bg-main);
-        padding: 28px 26px 34px;
-        border-radius: 22px;
-        box-shadow:
-            9px 9px 20px var(--shadow-dark),
-            -9px -9px 20px var(--shadow-light);
-    }
-
-    .progress-item {
-        margin-bottom: 26px;
-    }
-
-    .progress-header {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 8px;
-        font-size: 0.95em;
-    }
-
-    .progress-header h4 {
-        color: var(--accent);
-        font-size: 1em;
-    }
-
-    .progress-header span {
-        color: var(--text-soft);
-    }
-
-    .progress-bar {
-        height: 12px;
-        border-radius: 999px;
-        background: var(--bg-main);
-        box-shadow:
-            inset 5px 5px 10px var(--shadow-dark),
-            inset -5px -5px 10px var(--shadow-light);
-        overflow: hidden;
-    }
-
-    .progress-fill {
-        height: 100%;
-        border-radius: 999px;
-        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-        width: 0;
-        transition: width 1s ease;
-    }
-
-    /* ------------ CONTACT ------------ */
-    .contact-content {
-        text-align: center;
-        max-width: 650px;
-        margin: 0 auto;
-    }
-
-    .contact-content p {
-        font-size: 1.08em;
-        color: var(--text-soft);
-        margin-bottom: 34px;
-    }
-
-    .contact-links {
-        display: flex;
-        justify-content: center;
-        gap: 22px;
-        flex-wrap: wrap;
-    }
-
-    .contact-link {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 14px 24px;
-        border-radius: 18px;
-        background: var(--bg-main);
-        color: var(--text-main);
-        text-decoration: none;
-        box-shadow:
-            7px 7px 16px var(--shadow-dark),
-            -7px -7px 16px var(--shadow-light);
-        transition: all 0.2s ease;
-        font-size: 0.96em;
-    }
-
-    .contact-link:hover {
-        transform: translateY(-3px);
-        box-shadow:
-            4px 4px 10px var(--shadow-dark),
-            -4px -4px 10px var(--shadow-light);
-    }
-
-    /* ------------ FOOTER ------------ */
-    footer {
-        text-align: center;
-        padding: 26px;
-        margin-top: 40px;
-        color: var(--text-soft);
-        background: var(--bg-main);
-        box-shadow:
-            -4px -4px 12px var(--shadow-light),
-            4px 4px 12px var(--shadow-dark);
-    }
-
-    /* ------------ SCROLL TOP ------------ */
-    .scroll-top {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        background: var(--bg-main);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        opacity: 0;
-        transition: all 0.25s ease;
-        z-index: 999;
-        box-shadow:
-            7px 7px 16px var(--shadow-dark),
-            -7px -7px 16px var(--shadow-light);
-    }
-
-    .scroll-top.visible {
-        opacity: 1;
-    }
-
-    .scroll-top:hover {
-        transform: translateY(-3px);
-        box-shadow:
-            4px 4px 10px var(--shadow-dark),
-            -4px -4px 10px var(--shadow-light);
-    }
-
-    /* ------------ RESPONSIVE (MOBILE) ------------ */
-    @media (max-width: 768px) {
-
-      /* Navbar: stacked, centered, tighter */
-      nav {
-        padding: 10px 16px;
-      }
-
-      .nav-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .logo {
-        font-size: 1.4em;
-      }
-
-      .nav-links {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(80px, 1fr));
-        justify-content: center;
-        align-items: center;
-        gap: 10px 12px;
-        width: 100%;
-      }
-
-      .nav-links li {
-        display: flex;
-        justify-content: center;
-      }
-
-      /* Make last nav item (Contact) full width */
-      .nav-links li:last-child {
-        grid-column: span 2;
-        justify-content: center;
-      }
-
-      .nav-links a {
-        padding: 8px 14px;
-        font-size: 0.8rem;
-        text-align: center;
-      }
-
-      /* Hero tweaks */
-      .hero {
-        padding-top: 110px;
-        min-height: 100vh;
-      }
-
-      .hero-content h1 {
-        font-size: 2.1em;
-      }
-
-      .hero-content p {
-        font-size: 0.98em;
-      }
-
-      .cta-button {
-        padding: 10px 26px;
-        font-size: 0.9em;
-      }
-
-      /* Sections: less padding */
-      section {
-        padding: 70px 20px;
-      }
-
-      /* About: one column layout */
-      .about-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-
-      /* Projects: single column */
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      /* Contact links: vertical, full width */
-      .contact-links {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 14px;
-      }
-
-      .contact-link {
-        justify-content: center;
-        width: 100%;
-      }
-
-      /* Scroll top smaller on mobile */
-      .scroll-top {
-        width: 42px;
-        height: 42px;
-        bottom: 16px;
-        right: 16px;
-      }
-    }
-
-</style>
+    </style>
 
 </head>
+
 <body>
     <!-- Navigation -->
     <nav id="navbar">
@@ -703,13 +729,13 @@
             <div class="about-text">
                 <h3>I'm Satanand – MIS Executive & Automation Builder</h3>
                 <p>
-                    I design and build systems that make businesses run smoother: 
-                    production trackers, purchase workflows, inventory tools and dashboards. 
-                    My focus is simple – reduce manual work, increase visibility, and give management 
+                    I design and build systems that make businesses run smoother:
+                    production trackers, purchase workflows, inventory tools and dashboards.
+                    My focus is simple – reduce manual work, increase visibility, and give management
                     clean numbers to decide faster.
                 </p>
                 <p>
-                    I work mainly with Excel, Google Sheets, Apps Script and lightweight web apps 
+                    I work mainly with Excel, Google Sheets, Apps Script and lightweight web apps
                     to turn messy operations into structured, trackable processes for MSMEs and growing teams.
                 </p>
             </div>
@@ -745,14 +771,17 @@
                 <div class="project-content">
                     <h3>Inventory Management System</h3>
                     <p>
-                        Excel-based system to manage stock with automated calculations and dashboards for management.Having the userform feature for easy data entry and retrieval. Making inventory tracking simple and efficient. 
+                        Excel-based system to manage stock with automated calculations and dashboards for
+                        management.Having the userform feature for easy data entry and retrieval. Making inventory
+                        tracking simple and efficient.
                     </p>
                     <div class="project-tags">
                         <span class="tag">Excel</span>
                         <span class="tag">VBA</span>
                         <span class="tag">Userform</span>
                     </div>
-                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/IMS" target="_blank" class="project-link">View Project →</a>
+                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/IMS" target="_blank"
+                        class="project-link">View Project →</a>
                 </div>
             </div>
             <!-- Web-based Production Management System -->
@@ -761,7 +790,7 @@
                 <div class="project-content">
                     <h3>Production Management System (Web + Sheets)</h3>
                     <p>
-                        Web-based CRUD app for MSME production tracking using Google Sheets as database – 
+                        Web-based CRUD app for MSME production tracking using Google Sheets as database –
                         order-wise status, sample data and GitHub-ready documentation.
                     </p>
                     <div class="project-tags">
@@ -770,7 +799,8 @@
                         <span class="tag">Apps Script</span>
                         <span class="tag">Google Sheets</span>
                     </div>
-                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/PMS" target="_blank" class="project-link">View Project →</a>
+                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/PMS" target="_blank"
+                        class="project-link">View Project →</a>
                 </div>
             </div>
 
@@ -780,7 +810,7 @@
                 <div class="project-content">
                     <h3>Customer Complaint Portal (Sheets DB)</h3>
                     <p>
-                        Web-based complaint booking system using Google Sheets as backend – 
+                        Web-based complaint booking system using Google Sheets as backend –
                         form submission, logged records and trackable entries.
                     </p>
                     <div class="project-tags">
@@ -788,7 +818,8 @@
                         <span class="tag">Apps Script</span>
                         <span class="tag">Web Form</span>
                     </div>
-                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/CRM" target="_blank" class="project-link">View Project →</a>
+                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/CRM" target="_blank"
+                        class="project-link">View Project →</a>
                 </div>
             </div>
 
@@ -798,7 +829,7 @@
                 <div class="project-content">
                     <h3>Purchase Analytics & Vendor Dashboard (Upgrading Stage...)</h3>
                     <p>
-                        A complete purchase MIS: purchase tracker, vendor scorecard, price comparison and KPIs 
+                        A complete purchase MIS: purchase tracker, vendor scorecard, price comparison and KPIs
                         to analyse spend, lead time and supplier performance.
                     </p>
                     <div class="project-tags">
@@ -816,7 +847,7 @@
                 <div class="project-content">
                     <h3>Sales & Performance Dashboard</h3>
                     <p>
-                        BI dashboard to analyse sales performance, customer trends and revenue patterns, 
+                        BI dashboard to analyse sales performance, customer trends and revenue patterns,
                         with presentation-ready visuals for management review.
                     </p>
                     <div class="project-tags">
@@ -824,7 +855,8 @@
                         <span class="tag">SQL</span>
                         <span class="tag">DAX</span>
                     </div>
-                    <a href="https://github.com/K3nB/Sheet-based-Projects/blob/main/Exceptional/Sales%20Dashboard.md" target="_blank" class="project-link">View Project →</a>
+                    <a href="https://github.com/K3nB/Sheet-based-Projects/blob/main/Exceptional/Sales%20Dashboard.md"
+                        target="_blank" class="project-link">View Project →</a>
                 </div>
             </div>
 
@@ -834,7 +866,7 @@
                 <div class="project-content">
                     <h3>ERP for Small Business (In Progress)</h3>
                     <p>
-                        Designing a modular ERP-style system for MSMEs – starting with production, purchase and 
+                        Designing a modular ERP-style system for MSMEs – starting with production, purchase and
                         inventory modules using web front-end and Google Sheets backend.
                     </p>
                     <div class="project-tags">
@@ -851,7 +883,7 @@
                 <div class="project-content">
                     <h3>Attendance Management System</h3>
                     <p>
-                        An attendance management system using HTML, Tailwind CSS, and Google Sheets as the backend. 
+                        An attendance management system using HTML, Tailwind CSS, and Google Sheets as the backend.
                         This system allows for easy tracking and management of attendance records.
                     </p>
                     <div class="project-tags">
@@ -859,7 +891,8 @@
                         <span class="tag">Google Sheets</span>
                         <span class="tag">Apps Script</span>
                     </div>
-                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/ATTENDANCE" target="_blank" class="project-link">View Project →</a>
+                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/ATTENDANCE" target="_blank"
+                        class="project-link">View Project →</a>
                 </div>
             </div>
             <!-- Expense Management System -->
@@ -868,7 +901,7 @@
                 <div class="project-content">
                     <h3>Expense Management System</h3>
                     <p>
-                        An expense management system using HTML, Tailwind CSS, and Google Sheets as the backend. 
+                        An expense management system using HTML, Tailwind CSS, and Google Sheets as the backend.
                         This system allows for easy tracking and management of expense records.
                     </p>
                     <div class="project-tags">
@@ -876,7 +909,8 @@
                         <span class="tag">Google Sheets</span>
                         <span class="tag">Apps Script</span>
                     </div>
-                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/Expense-Tracker" target="_blank" class="project-link">View Project →</a>
+                    <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/Expense-Tracker" target="_blank"
+                        class="project-link">View Project →</a>
                 </div>
             </div>
         </div>
@@ -938,9 +972,8 @@
             </div>
 
             <p style="text-align: center; margin-top: 30px; color: #bbb;">
-                <a href="https://docs.google.com/spreadsheets/d/15YqZ83GmbvBzo__XsNSYdx54cOYqJqR-YWZuQzI5tPA/edit?gid=750396312#gid=750396312" 
-                   target="_blank" 
-                   style="color: var(--primary-color); text-decoration: none;">
+                <a href="https://docs.google.com/spreadsheets/d/15YqZ83GmbvBzo__XsNSYdx54cOYqJqR-YWZuQzI5tPA/edit?gid=750396312#gid=750396312"
+                    target="_blank" style="color: var(--primary-color); text-decoration: none;">
                     📊 View Detailed Progress Tracking Sheet →
                 </a>
             </p>
@@ -1047,28 +1080,30 @@
             progressObserver.observe(progressSection);
         }
 
-        // Smooth scroll for navigation links
+        // Smooth scroll for navigation links + active ring toggle
+        const navLinks = document.querySelectorAll('.nav-links a');
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const href = this.getAttribute('href');
+                const target = document.querySelector(href);
+
                 if (target) {
+                    e.preventDefault();
                     target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                     });
                 }
-            });
-        });
 
-        // Active nav highlight with animated gradient ring
-        const navLinks = document.querySelectorAll(".nav-links a");
-        navLinks.forEach(link => {
-          link.addEventListener("click", () => {
-            navLinks.forEach(l => l.classList.remove("active"));
-            link.classList.add("active");
-          });
+                // If this anchor is inside the nav, toggle active state
+                if (this.closest('.nav-links')) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
+
 </html>
