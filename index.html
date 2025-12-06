@@ -509,30 +509,107 @@
             -4px -4px 10px var(--shadow-light);
     }
 
-    /* ------------ RESPONSIVE ------------ */
+    /* ------------ RESPONSIVE (MOBILE) ------------ */
     @media (max-width: 768px) {
+
+      /* Navbar: stacked, centered, tighter */
+      nav {
+        padding: 10px 16px;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo {
+        font-size: 1.4em;
+      }
+
       .nav-links {
         display: grid;
-        grid-template-columns: repeat(2, auto);
+        grid-template-columns: repeat(2, minmax(80px, 1fr));
         justify-content: center;
         align-items: center;
-        gap: 10px 16px;
+        gap: 10px 12px;
+        width: 100%;
       }
-    
+
       .nav-links li {
         display: flex;
         justify-content: center;
       }
-    
-      /* Make Contact button full width */
+
+      /* Make last nav item (Contact) full width */
       .nav-links li:last-child {
         grid-column: span 2;
         justify-content: center;
       }
-    
+
       .nav-links a {
-        padding: 8px 18px;
-        font-size: 0.85rem;
+        padding: 8px 14px;
+        font-size: 0.8rem;
+        text-align: center;
+      }
+
+      /* Hero tweaks */
+      .hero {
+        padding-top: 110px;
+        min-height: 100vh;
+      }
+
+      .hero-content h1 {
+        font-size: 2.1em;
+      }
+
+      .hero-content p {
+        font-size: 0.98em;
+      }
+
+      .cta-button {
+        padding: 10px 26px;
+        font-size: 0.9em;
+      }
+
+      /* Sections: less padding */
+      section {
+        padding: 70px 20px;
+      }
+
+      /* About: one column layout */
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Projects: single column */
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Contact links: vertical, full width */
+      .contact-links {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+      }
+
+      .contact-link {
+        justify-content: center;
+        width: 100%;
+      }
+
+      /* Scroll top smaller on mobile */
+      .scroll-top {
+        width: 42px;
+        height: 42px;
+        bottom: 16px;
+        right: 16px;
       }
     }
 
@@ -608,7 +685,6 @@
     </section>
 
     <!-- Projects Section -->
-        <!-- Projects Section -->
     <section id="projects">
         <h2 class="section-title">My Projects</h2>
         <div class="projects-grid">
@@ -644,12 +720,11 @@
                         <span class="tag">Apps Script</span>
                         <span class="tag">Google Sheets</span>
                     </div>
-                    <!-- Update this link with your repo or live URL -->
                     <a href="https://github.com/K3nB/Sheet-based-Projects/tree/main/PMS" target="_blank" class="project-link">View Project →</a>
                 </div>
             </div>
 
-            <!-- Web-based Customer Complaint System (renamed from Google Sheets Automation) -->
+            <!-- Web-based Customer Complaint System -->
             <div class="project-card">
                 <div class="project-icon">🧾</div>
                 <div class="project-content">
@@ -681,7 +756,6 @@
                         <span class="tag">Dashboards</span>
                         <span class="tag">MIS</span>
                     </div>
-                    <!-- Update this with your Excel/Sheets repo or link -->
                     <a href="#" target="_blank" class="project-link">View Project →</a>
                 </div>
             </div>
