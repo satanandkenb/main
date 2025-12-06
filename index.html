@@ -85,6 +85,7 @@
             -4px -4px 10px var(--shadow-light);
         transition: all 0.2s ease;
         font-size: 0.95em;
+        background: var(--bg-main);
     }
 
     .nav-links a::after {
@@ -95,6 +96,55 @@
         box-shadow:
             inset 3px 3px 8px var(--shadow-dark),
             inset -3px -3px 8px var(--shadow-light);
+    }
+
+    /* ------------ ACTIVE NAV GRADIENT RING ------------ */
+    .nav-links a.active {
+        position: relative;
+        z-index: 1;
+    }
+
+    .nav-links a.active::before {
+        content: "";
+        position: absolute;
+        inset: -4px;                    /* ring thickness */
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        z-index: -1;
+        padding: 4px;
+        background-size: 200% 200%;
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+                mask-composite: exclude;
+        animation:
+            ring-pop 0.25s ease-out,
+            ring-gradient 4s linear infinite;
+    }
+
+    @keyframes ring-pop {
+        0% {
+            transform: scale(0.6);
+            opacity: 0;
+        }
+        60% {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    @keyframes ring-gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 100% 50%;
+        }
     }
 
     /* ------------ HERO ------------ */
@@ -622,7 +672,7 @@
         <div class="nav-container">
             <div class="logo">Satanand</div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#progress">Progress</a></li>
@@ -1009,6 +1059,15 @@
                     });
                 }
             });
+        });
+
+        // Active nav highlight with animated gradient ring
+        const navLinks = document.querySelectorAll(".nav-links a");
+        navLinks.forEach(link => {
+          link.addEventListener("click", () => {
+            navLinks.forEach(l => l.classList.remove("active"));
+            link.classList.add("active");
+          });
         });
     </script>
 </body>
