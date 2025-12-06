@@ -511,31 +511,31 @@
 
     /* ------------ RESPONSIVE ------------ */
     @media (max-width: 768px) {
-        nav {
-            padding: 12px 20px;
-        }
-
-        .nav-links {
-            gap: 14px;
-            font-size: 0.85em;
-        }
-
-        .hero-content h1 {
-            font-size: 2.3em;
-        }
-
-        .about-content {
-            grid-template-columns: 1fr;
-        }
-
-        .projects-grid {
-            grid-template-columns: 1fr;
-        }
-
-        section {
-            padding: 70px 20px;
-        }
+      .nav-links {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        justify-content: center;
+        align-items: center;
+        gap: 10px 16px;
+      }
+    
+      .nav-links li {
+        display: flex;
+        justify-content: center;
+      }
+    
+      /* Make Contact button full width */
+      .nav-links li:last-child {
+        grid-column: span 2;
+        justify-content: center;
+      }
+    
+      .nav-links a {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+      }
     }
+
 </style>
 
 </head>
