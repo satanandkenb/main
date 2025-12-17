@@ -3,269 +3,283 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Satanand | Portfolio</title>
-  <link rel="icon" href="favicon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
+  <title>Satanand – Resume</title>
   <style>
     :root {
-      --primary-bg: #ffffff;
-      --accent: #2f2f2f;
-      --highlight: #ffcc00;
-      --text-main: #333;
-      --text-muted: #666;
-      --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      --primary-color: #151f49;
+      --secondary-color: #5ec32b;
+      --accent: #f39c12;
+      --bg-main: #e0e4ec;
+      --shadow-dark: #b9bcc4;
+      --shadow-light: #ffffff;
+      --text-main: #333333;
+      --text-soft: #666666;
     }
 
-    html {
-      scroll-behavior: smooth;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      margin: 0;
-      font-family: "Inter", "Segoe UI", sans-serif;
-      background: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-main);
       color: var(--text-main);
       line-height: 1.6;
     }
 
+    .resume-container {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 50px 60px;
+      background: var(--bg-main);
+      border-radius: 28px;
+      box-shadow:
+        14px 14px 30px var(--shadow-dark),
+        -14px -14px 30px var(--shadow-light);
+    }
+
     /* Header */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      background: var(--accent);
-      color: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+    .resume-header {
+      text-align: center;
+      margin-bottom: 50px;
     }
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
+    .resume-header h1 {
+      font-size: 3em;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    nav {
-      display: flex;
-      gap: 1.5rem;
+    .resume-header h2 {
+      font-size: 1.2em;
+      color: var(--accent);
+      margin-top: 8px;
     }
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
+    .contact-info {
+      margin-top: 14px;
+      font-size: 0.95em;
+      color: var(--text-soft);
     }
 
-    nav a:hover {
-      color: var(--highlight);
+    .contact-info span {
+      margin: 0 10px;
+      white-space: nowrap;
     }
 
-    /* Main Content */
-    section {
-      max-width: 900px;
-      margin: 2rem auto;
-      background: var(--primary-bg);
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
+    /* Sections */
+    .section {
+      margin-bottom: 45px;
     }
 
-    h2 {
-      border-bottom: 2px solid #eee;
-      padding-bottom: 0.4rem;
-      margin-bottom: 1.2rem;
+    .section-title {
+      font-size: 1.6em;
+      margin-bottom: 18px;
+      color: var(--primary-color);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      margin-top: 6px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    }
+
+    /* Summary */
+    .summary {
+      color: var(--text-soft);
+      font-size: 1em;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .skill-box {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: var(--bg-main);
+      box-shadow:
+        inset 6px 6px 12px var(--shadow-dark),
+        inset -6px -6px 12px var(--shadow-light);
+      font-size: 0.95em;
+      color: var(--text-soft);
+    }
+
+    .skill-box strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* Experience */
+    .experience-item {
+      margin-bottom: 30px;
+    }
+
+    .experience-item h3 {
+      font-size: 1.15em;
       color: var(--accent);
     }
 
-    h3 {
-      color: var(--text-main);
-      margin-top: 0;
+    .experience-meta {
+      font-size: 0.9em;
+      color: var(--text-soft);
+      margin-bottom: 8px;
     }
 
-    .sub {
-      color: var(--text-muted);
-      font-size: 0.9rem;
+    .experience-item ul {
+      padding-left: 20px;
+      color: var(--text-soft);
+      font-size: 0.95em;
     }
 
-    ul, ol {
-      padding-left: 1.2rem;
+    .experience-item li {
+      margin-bottom: 6px;
     }
 
-    li {
-      margin-bottom: 0.75rem;
+    /* Achievements */
+    .achievement-list {
+      padding-left: 20px;
+      color: var(--text-soft);
     }
 
-    /* Project Cards */
-    .project-card {
-      padding: 1.2rem;
-      border-radius: 10px;
-      margin-bottom: 1.5rem;
-      background: #fafafa;
-      border-left: 4px solid #ddd;
-      transition: all 0.3s ease;
+    .achievement-list li {
+      margin-bottom: 8px;
     }
 
-    .project-card:hover {
-      border-left-color: var(--highlight);
-      background: #fff;
-      box-shadow: var(--shadow);
+    /* Education */
+    .education-item h3 {
+      color: var(--accent);
+      font-size: 1.1em;
     }
 
-    .project-details {
-      margin-top: 1rem;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      background: #fafafa;
-      border-left: 4px solid #aaa;
-      padding: 1rem;
-      border-radius: 6px;
-    }
-
-    .project-details h4 {
-      margin-top: 0;
-      color: var(--text-main);
+    .education-item p {
+      color: var(--text-soft);
+      font-size: 0.95em;
     }
 
     /* Footer */
-    footer {
+    .resume-footer {
       text-align: center;
-      background: var(--accent);
-      color: #bbb;
-      padding: 1.2rem;
-      font-size: 0.9rem;
-      margin-top: 2rem;
+      font-size: 0.9em;
+      color: var(--text-soft);
+      margin-top: 40px;
     }
 
-    footer a {
-      color: #bbb;
-      text-decoration: none;
-      margin: 0 0.4rem;
-    }
+    @media (max-width: 768px) {
+      .resume-container {
+        padding: 35px 24px;
+        margin: 30px 14px;
+      }
 
-    footer a:hover {
-      color: var(--highlight);
-    }
-
-    a {
-      color: var(--accent);
-    }
-
-    a:hover {
-      color: var(--highlight);
+      .resume-header h1 {
+        font-size: 2.2em;
+      }
     }
   </style>
 </head>
 <body>
 
-  
-  <main>
-    <section id="personal">
-      <h2>Personal Details</h2>
-      <h3>Satanand</h3>
-      <p>
-        <strong>Email:</strong> <a href="mailto:satanand74@gmail.com">satanand74@gmail.com</a><br>
-        <strong>Address:</strong> B-203, Prem Nagar 3, Kirari Suleman Nagar, Delhi - 110086
+  <div class="resume-container">
+
+    <header class="resume-header">
+      <h1>Satanand</h1>
+      <h2>Operations Manager & MIS Executive</h2>
+      <div class="contact-info">
+        <span>📍 New Delhi, India</span>
+        <span>📞 +91 9217168856</span>
+        <span>✉️ choubeysatanand79@gmail.com</span><br />
+        <span>🔗 linkedin.com/in/satanand-5bb0b1240</span>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2 class="section-title">Professional Summary</h2>
+      <p class="summary">
+        Results-driven Operations Manager and MIS Executive with 4+ years of experience converting
+        paper-driven operations into automated, data-driven systems. Specialized in Excel VBA, Google Apps
+        Script, Power BI and no-code platforms to build production-grade workflows for MSME manufacturing
+        environments. Known for reducing reporting time by 40%, eliminating manual errors and delivering
+        reliable systems retained by multiple employers.
       </p>
     </section>
 
-    <section id="about">
-      <h2>About</h2>
-      <p>Proactive MIS Executive skilled in Google Sheets and Excel automation, flow monitoring, and dashboard creation. Experienced in SQL, ETL, and data visualization with Tableau and Power BI. Completed a comprehensive Data Science course and recognized as a two-time Mental Math Zonal Level topper.</p>
+    <section class="section">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-box"><strong>Automation & Scripting</strong>Excel VBA, Macros, Power Query, Google Apps Script</div>
+        <div class="skill-box"><strong>Application Development</strong>Google AppSheet, JavaScript, HTML & CSS</div>
+        <div class="skill-box"><strong>Data & BI</strong>Power BI, Looker Studio, DAX, Pivot Tables</div>
+        <div class="skill-box"><strong>Operations Systems</strong>Inventory, Production Tracking, MIS, Digital Workflows</div>
+      </div>
     </section>
 
-    <section id="education">
-      <h2>Education</h2>
-      <ol>
-        <li><strong>Indira Gandhi National Open University</strong>, New Delhi, India <br> Bachelor of Computer Application (2023 – Present)</li>
-        <li><strong>CBSE</strong>, New Delhi, India <br> 12th (Science, Non-Medical) (2020 – 2021)</li>
-        <li><strong>CBSE</strong>, New Delhi, India <br> 10th (2018 – 2019)</li>
-      </ol>
+    <section class="section">
+      <h2 class="section-title">Professional Experience</h2>
+
+      <div class="experience-item">
+        <h3>Operations Manager — AVA Engineering</h3>
+        <div class="experience-meta">Dec 2025 – Present | New Delhi</div>
+        <ul>
+          <li>Designed end-to-end operational visibility systems from shop floor to executive dashboards</li>
+          <li>Built automation-first workflows replacing manual processes in MSME manufacturing</li>
+          <li>Developed ERP-style systems using Google Apps Script and Power BI</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <h3>MIS Executive — Unique Auto Products Pvt. Ltd.</h3>
+        <div class="experience-meta">Feb 2025 – Aug 2025 | New Delhi</div>
+        <ul>
+          <li>Built Flow Monitoring System and Inventory Management System from scratch</li>
+          <li>Improved process visibility by 60% through automated dashboards</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <h3>MIS Executive — STB Technologies Pvt. Ltd.</h3>
+        <div class="experience-meta">Jul 2021 – Mar 2025 | Haryana</div>
+        <ul>
+          <li>Reduced reporting time by 40% using Excel VBA automation</li>
+          <li>Created mobile-first inventory apps for warehouse operations</li>
+          <li>Built self-service dashboards used by 50+ staff</li>
+        </ul>
+      </div>
     </section>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <p><strong>▪️Technical:</strong> Statistics, ETL, Data Visualization, Automation, App Script, VBA, 50 WPM Typing Speed</p>
-      <p><strong>▪️Tools:</strong> Tableau, Power BI, Excel, Google Sheets, MySQL</p>
-    </section>
-
-    <section id="experience">
-      <h2>Experience</h2>
-      <h3>STB Technologies Pvt Ltd | Business Operations / MIS Executive</h3>
-      <p class="sub">New Delhi, India | July 2023 – April 2025</p>
-      <ul>
-        <li>Resolved customer complaints by coordinating with field engineers, ensuring prompt service delivery and customer satisfaction.</li>
-        <li>Prepared delivery challans and managed spare parts dispatch to engineers, supporting efficient issue resolution.</li>
-        <li>Developed a Pivot Table–based tracking system that reduced spare parts reporting time from 4–5 hours to under 6 minutes.</li>
-        <li>Enhanced operational accuracy and efficiency by automating repetitive manual reporting tasks.</li>
-        <li>Created interactive dashboards and performance reports using Excel and Google Sheets to provide management with real-time insights.</li>
+    <section class="section">
+      <h2 class="section-title">Key Achievements</h2>
+      <ul class="achievement-list">
+        <li>Retained as technical consultant by two former employers</li>
+        <li>Deployed production-grade systems with 99%+ uptime</li>
+        <li>Eliminated data entry errors using validation-driven workflows</li>
       </ul>
     </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-
-      <div class="project-card">
-        <strong>Inventory Management System:</strong>
-        <p>Implemented VBA-driven automation in Excel with dynamic dashboards, improving reporting accuracy.</p>
-      </div>
-
-      <div class="project-card">
-        <strong>Flow Monitoring Sheet:</strong>
-        <p>Built a Google Sheets-based system automating dispatch tracking, reducing manual work by 40%, and adding validation checks with interactive dashboards.</p>
-      </div>
-
-      <div class="project-card">
-        <strong>Sales Dashboard for E-Commerce Business:</strong>
-        <p>Built an interactive Power BI dashboard to track and analyze online sales performance and enable data-driven decisions.</p>
-
-        <div class="project-details">
-          <h4>Technologies Used</h4>
-          <p>Power BI</p>
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="https://github.com/Satanand-Ken/Satanand-Resume/blob/main/E-Commerce%20Sales%20Data.pbix" target="_blank" rel="noopener noreferrer">Download Power BI File (.pbix)</a></li>
-          </ul>
-          <h4>How It Works</h4>
-          <ul>
-            <li>Developed interactive worksheets with parameters, filters, and slicers for user-driven drilldowns.</li>
-            <li>Created data connections, joined tables, and implemented calculated measures to shape the model.</li>
-            <li>Designed a variety of custom visualizations: bar, pie, line, area, and map charts.</li>
-            <li>Implemented slicers and parameters for flexible KPI exploration.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <strong>Customer Complaints Booking System:</strong>
-        <p>Designed an external webpage integrated with Google Sheets as a database. Implemented a Master Sheet dashboard featuring time delay KPIs, engineer efficiency scores, and real-time insights. <a href="https://github.com/Satanand-Ken/GsheetCRM" target="_blank" rel="noopener noreferrer">View Project</a></p>
-
-        <div class="project-details">
-          <h4>Technologies Used</h4>
-          <p>HTML5, CSS3 (Grid Layout), Vanilla JavaScript, Google Apps Script, Google Sheets</p>
-          <h4>How It Works</h4>
-          <p>Includes a custom menu in Google Sheets (<code>Register Complain → Entry Form</code>) that opens a styled form. Submitted data is processed via Apps Script and stored in the <code>Data_Base</code> sheet. A Master Dashboard sheet visualizes KPIs such as time delays and engineer efficiency scores.</p>
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="https://github.com/Satanand-Ken/GsheetCRM/blob/main/BookingForm.html" target="_blank" rel="noopener noreferrer">BookingForm.html</a></li>
-            <li><a href="https://github.com/Satanand-Ken/GsheetCRM/blob/main/CRM.xlsx" target="_blank" rel="noopener noreferrer">CRM.xlsx</a></li>
-            <li><a href="https://github.com/Satanand-Ken/GsheetCRM/blob/main/Code.gs" target="_blank" rel="noopener noreferrer">Code.gs</a></li>
-          </ul>
-        </div>
+    <section class="section">
+      <h2 class="section-title">Education</h2>
+      <div class="education-item">
+        <h3>Bachelor’s Degree in Computer Software Engineering</h3>
+        <p>Indira Gandhi National Open University | 2023 – 2026 (Expected)</p>
       </div>
     </section>
-  </main>
 
-  <footer>
-    <p>© 2025 Satanand | 
-      <a href="https://satanandkenb.github.io/main">Portfolio</a> | 
-      <a href="https://github.com/satanandkenb" target="_blank" rel="noopener noreferrer">GitHub</a> | 
-      <a href="https://www.linkedin.com/in/satanand-5bb0b1240/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    </p>
-  </footer>
+    <footer class="resume-footer">
+      Built as a single-page resume using HTML & CSS • Designed for print and web
+    </footer>
+
+  </div>
+
 </body>
 </html>
-
